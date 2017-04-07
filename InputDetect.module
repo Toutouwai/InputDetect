@@ -1,0 +1,50 @@
+<?php
+
+/**
+ *
+ * Input Detect
+ *
+ * @author Robin Sallis
+ *
+ * ProcessWire 3.x
+ * Copyright (C) 2011 by Ryan Cramer
+ * Licensed under GNU/GPL v2, see LICENSE.TXT
+ *
+ * http://www.processwire.com
+ * http://www.ryancramer.com
+ *
+ */
+
+class InputDetect extends WireData implements Module {
+
+	/**
+	 * Module information
+	 */
+	public static function getModuleInfo() {
+		return array(
+			'title' => 'Input Detect',
+			'version' => 1,
+			'summary' => 'For better detection of touch-driven devices when setting the "touch" session variable at login.',
+			'autoload' => "template=admin",
+		);
+	}
+
+	/**
+	 * Ready
+	 */
+	public function ready() {
+		$this->addHookBefore('ProcessLogin::renderLoginForm', $this, 'addScripts');
+	}
+
+	/**
+	 * Add scripts to login page
+	 */
+	public function addScripts() {
+		$info = $this->getModuleInfo();
+		$version = (int) $info['version'];
+		$config = $this->config;
+		$config->scripts->add($config->urls->{$this->className} . "what-input.js?v=$version");
+		$config->scripts->add($config->urls->{$this->className} . "{$this->className}.js?v={$version}");
+	}
+
+}
