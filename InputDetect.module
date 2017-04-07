@@ -43,7 +43,7 @@ class InputDetect extends WireData implements Module {
 		$info = $this->getModuleInfo();
 		$version = (int) $info['version'];
 		$config = $this->config;
-		$config->scripts->add($config->urls->{$this->className} . "what-input.js?v=$version");
+		$config->scripts->add($config->urls->{$this->className} . "what-input.min.js?v=$version");
 		$config->scripts->add($config->urls->{$this->className} . "{$this->className}.js?v={$version}");
 	}
 
