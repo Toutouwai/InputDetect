@@ -25,6 +25,7 @@ class InputDetect extends WireData implements Module {
 			'title' => 'Input Detect',
 			'version' => 1,
 			'summary' => 'For better detection of touch-driven devices when setting the "touch" session variable at login.',
+			'author' => 'Robin Sallis',
 			'autoload' => "template=admin",
 		);
 	}
@@ -41,7 +42,7 @@ class InputDetect extends WireData implements Module {
 	 */
 	public function addScripts() {
 		$info = $this->getModuleInfo();
-		$version = (int) $info['version'];
+		$version = $info['version'];
 		$config = $this->config;
 		$config->scripts->add($config->urls->{$this->className} . "what-input.min.js?v=$version");
 		$config->scripts->add($config->urls->{$this->className} . "{$this->className}.js?v={$version}");
