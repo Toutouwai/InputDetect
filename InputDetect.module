@@ -23,10 +23,11 @@ class InputDetect extends WireData implements Module {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Input Detect',
-			'version' => 1,
 			'summary' => 'For better detection of touch-driven devices when setting the "touch" session variable at login.',
+			'version' => '0.1.0',
 			'author' => 'Robin Sallis',
-			'autoload' => "template=admin",
+			'href' => 'https://github.com/Toutouwai/InputDetect',
+			'autoload' => 'template=admin',
 		);
 	}
 
